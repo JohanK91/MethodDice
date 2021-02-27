@@ -1,2 +1,2 @@
 02/26 - Added change file.
-
+02/27 - Made basic plan for the game and uploaded to github.
