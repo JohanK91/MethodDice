@@ -15,7 +15,7 @@ def start():
     print("Welcome to the Dice Game of life. We will play using the rules of Pig. One dice.")
     print("Your rolled numbers will add together.")
     print("You may also hold at anytime, which will add your numbers together and give the turn to the other player.")
-    print("The catch is that if you roll a 1, your turn is over and your temporary points are wasted.")
+    print("The catch is that if you roll a 1, your turn is over and your temporary points are wasted.......")
     numOfPlayers()
 
 def numOfPlayers():
