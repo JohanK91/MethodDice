@@ -1,2 +1,6 @@
 02/26 - Added change file.
 02/27 - Made basic plan for the game and uploaded to github.
+
+03/03 - Created working program, for human vs AI.
+
+03/04 - working game. Both 1p and 2p. Can change name.
