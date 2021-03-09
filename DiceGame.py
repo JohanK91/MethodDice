@@ -127,11 +127,6 @@ class Pig():
         print("History is a work in progress.")
         t.options()
          
-    def AIsetting(self):
-        print("AI settings are a work in progress.")
-        t.options()
-
-
 
     def namePlayer1(self):
         global Player1name
@@ -298,7 +293,7 @@ class Pig():
 
         elif self.choice == "2":
             mode = random.randint(5, 30)
-            print(mode)
+            #print(mode)
             #mode = int(random.random())
 
         elif self.choice == "3":
