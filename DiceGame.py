@@ -2,7 +2,7 @@ import random
 
 
 class Test:
-    
+    test
    
     def main(self):
  
