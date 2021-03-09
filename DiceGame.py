@@ -1,17 +1,17 @@
 import random
 
 
+
 class Test:
 
    
     def main(self):
- 
        # global Player1name
        # global Player2name
        # Player1name = ""
        # Player2name = ""       
-        t.start()
-        t.endmessage()
+       t.start()
+       t.endmessage()
 
 
     def start(self):
@@ -20,7 +20,7 @@ class Test:
         print("You may also hold at anytime, which will add your numbers together and give the turn to the other player.")
         print("The catch is that if you roll a 1, your turn is over and your temporary points are wasted.")
         t.numOfPlayers()
-
+        
 
     def numOfPlayers(self):
         print("Now, do you wish to play with 1 or 2 players?")
@@ -32,6 +32,7 @@ class Test:
         if num == "1":
             #OneplayerTF = True
             t.OnePlayer()
+
 
         elif num == "2":
             #OnePlayerTF = False
@@ -45,10 +46,12 @@ class Test:
     def OnePlayer(self):
         print("One player chosen.")
         print("It will be you versus the AI.")
+        t.AIsetting()
         global twoplay
         twoplay = "no"    
         t.namePlayer1()
         t.gamerun()
+        
 
 
     def TwoPlayers(self):
@@ -220,6 +223,8 @@ class Test:
     def computermove(self):
         self.macthscore = 0
         self.newround = True
+        self.diff = mode
+        self.comproll = True
         while self.newround == True:
             self.rolling = t.Dicerolling()
             if self.rolling == 1:
@@ -229,7 +234,7 @@ class Test:
             else:
                 print("The AI rolled a {}".format(self.rolling))
                 self.macthscore = self.macthscore + self.rolling
-                if self.macthscore < 20:
+                if (self.macthscore) < (mode) and (self.comproll) == True:
                     print("The AI has chosen to roll again!")
                 else:
                     self.newround = False
@@ -245,6 +250,26 @@ class Test:
 
     def endmessage(self):
         print("\n Thank you for playing our pig game =) See you soon again!")
+
+    def AIsetting(self):
+        global mode
+        print("\n choose (esay = 1), (normal (random) = 2), (extrem = 3) & (customized mode = 4): ")
+
+        self.choice = input("Enter the number of your choice: ")
+
+        if self.choice == "1":
+            mode = 40
+
+        elif self.choice == "2":
+            mode = int(random.random())
+
+        elif self.choice == "3":
+            mode = 5      
+
+        elif self.choice ==  "4":
+            level = int(input("Enter the number of level: "))
+            mode = level
+
 
 
 if __name__ == "__main__":
