@@ -1,9 +1,16 @@
 import random
 
 
-class Test:
-    
-   
+
+class Player1(object): 
+    def __init__(self):
+        self.var1 = 1
+        self.var2 = 2
+
+    def methodA(self):
+        self.var1 = self.var1 + self.var2
+        return self.var1
+
     def main(self):
  
        # global Player1name
@@ -92,6 +99,19 @@ class Test:
         else:
             print("Please input a number between 1-5.")
             t.options    
+
+    def highScore(self):
+        print("Highscore is a work in progress.")
+        t.options()
+
+    def history(self):
+        print("History is a work in progress.")
+        t.options()
+         
+    def AIsetting(self):
+        print("AI settings are a work in progress.")
+        t.options()
+
 
 
     def namePlayer1(self):
@@ -247,6 +267,8 @@ class Test:
         print("\n Thank you for playing our pig game =) See you soon again!")
 
 
+
+
 if __name__ == "__main__":
-    t = Test()
+    t = Player1()
     t.main()

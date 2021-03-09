@@ -4,3 +4,5 @@
 03/03 - Created working program, for human vs AI.
 
 03/04 - working game. Both 1p and 2p. Can change name.
+
+03/09 - made log.txt and can print to it. Started work on AI settings. 
