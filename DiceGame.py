@@ -2,8 +2,7 @@ import random
 
 
 class Test:
-    test
-    hgf
+
    
     def main(self):
  
