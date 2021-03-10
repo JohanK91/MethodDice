@@ -1,17 +1,42 @@
+
+"""
+Dice game
+
+Rulla dice
+spara nummer
+om ett, player2s tur
+om inte ett, rulla igen, eller hold
+om rulla igen, plussa nytt nummer med sparat nummer
+hold eller rulla igen, tills ett
+"""
 import random
 
+#from HighScore import HighScore1
+
+class testA():
+    def pp(self):
+        var = print(12)
+        print("derp")
+        return var
 
 
-class Test:
+class Pig(): 
+    def __init__(self):
+        self.var1 = 1
+        self.var2 = 2
 
-   
+    def methodA(self):
+        self.var1 = self.var1 + self.var2
+        return self.var1
+
     def main(self):
+ 
        # global Player1name
        # global Player2name
        # Player1name = ""
        # Player2name = ""       
-       t.start()
-       t.endmessage()
+        t.start()
+        t.endmessage()
 
 
     def start(self):
@@ -20,7 +45,7 @@ class Test:
         print("You may also hold at anytime, which will add your numbers together and give the turn to the other player.")
         print("The catch is that if you roll a 1, your turn is over and your temporary points are wasted.")
         t.numOfPlayers()
-        
+
 
     def numOfPlayers(self):
         print("Now, do you wish to play with 1 or 2 players?")
@@ -32,7 +57,6 @@ class Test:
         if num == "1":
             #OneplayerTF = True
             t.OnePlayer()
-
 
         elif num == "2":
             #OnePlayerTF = False
@@ -51,7 +75,6 @@ class Test:
         twoplay = "no"    
         t.namePlayer1()
         t.gamerun()
-        
 
 
     def TwoPlayers(self):
@@ -68,7 +91,8 @@ class Test:
         print("2. Upload your score to the highscore list.")
         print("3. History of rolls.")
         print("4. AI intelligence.")
-        print("5. Return to the match.")
+        print("5. Cheat")
+        print("6. Return to the match.")
         self.optionChoice = input("Enter the number of your choice: ")
         #while optionChoice != 5:
         if self.optionChoice == "1":
@@ -83,9 +107,13 @@ class Test:
             t.history()          
 
         elif self.optionChoice == "4":
-            t.AIsetting()      
+            t.AIsetting()   
 
         elif self.optionChoice == "5":
+            t.cheat()
+            t.gamerun()  
+
+        elif self.optionChoice == "6":
             if twoplay == "no":
                 t.gamerun()   
         
@@ -96,9 +124,19 @@ class Test:
             print("Please input a number between 1-5.")
             t.options    
 
+    def highScore(self):
+        print("Highscore is a work in progress.")
+        t.options()
+
+    def history(self):
+        print("History is a work in progress.")
+        t.options()
+         
 
     def namePlayer1(self):
         global Player1name
+        global Player2name
+        Player2name = "AI"
         Player1name = input("Input the name for Player 1: ")
         print("The first player in this duel is: " + Player1name)
        # while 
@@ -131,11 +169,15 @@ class Test:
 
 
     def gamerun(self):
+
         self.player1score = 0
-        self.player2score = 0
+        self.player2score = 0  
+
+
         while (self.player1score < 100 and self.player2score < 100):
            # print("Your current score is: {} \n" .format(self.player1score))
-            self.player1score = self.player1score + t.playermove()
+
+            self.player1score = self.player1score + t.playermove() + cheatpoints
             print(Player1name + ", your current score is: {} \n" .format(self.player1score))
             if(self.player1score < 100):
                 self.player2score = self.player2score + t.computermove()
@@ -164,8 +206,10 @@ class Test:
 
 
     def playermove(self):
+    
         self.macthscore = 0
         self.newround = True
+    
         while self.newround == True:
             self.rolling = t.Dicerolling()
             if (self.rolling == 1):
@@ -223,8 +267,7 @@ class Test:
     def computermove(self):
         self.macthscore = 0
         self.newround = True
-        self.diff = mode
-        self.comproll = True
+        #comproll = True
         while self.newround == True:
             self.rolling = t.Dicerolling()
             if self.rolling == 1:
@@ -234,8 +277,9 @@ class Test:
             else:
                 print("The AI rolled a {}".format(self.rolling))
                 self.macthscore = self.macthscore + self.rolling
-                if (self.macthscore) < (mode) and (self.comproll) == True:
+                if self.macthscore < mode: # and comproll == True:
                     print("The AI has chosen to roll again!")
+                    #mode = random.randint(5, 30)
                 else:
                     self.newround = False
         print("The AI's turn have ended. It is now " + Player1name + "'s turn to roll. Prepare yourself.")
@@ -243,17 +287,15 @@ class Test:
         return self.macthscore
 
 
-    def Dicerolling(self):
-        self.Diceupperside = int(random.random()*6+1)
-        return self.Diceupperside
-
-
-    def endmessage(self):
-        print("\n Thank you for playing our pig game =) See you soon again!")
-
     def AIsetting(self):
         global mode
-        print("\n choose (esay = 1), (normal (random) = 2), (extrem = 3) & (customized mode = 4): ")
+        #global comproll
+        #comproll 
+        print("Choose a setting.") 
+        print("1. Easy \n"+
+        "2. Random\n"+
+        "3. Extreme\n"+
+        "4. Customized")
 
         self.choice = input("Enter the number of your choice: ")
 
@@ -261,17 +303,84 @@ class Test:
             mode = 40
 
         elif self.choice == "2":
-            mode = int(random.random())
+            mode = random.randint(5, 30)
+            #print(mode)
+            #mode = int(random.random())
 
         elif self.choice == "3":
-            mode = 5      
+            mode = 5
 
         elif self.choice ==  "4":
-            level = int(input("Enter the number of level: "))
-            mode = level
+            mode = int(input("Input how many points the AI will aim for: "))
+
+        else:
+            print("Not all valid option. Try again.")
+            t.AIsetting()
+
+
+    def Dicerolling(self):
+        self.Diceupperside = int(random.random()*6+1)
+        return self.Diceupperside
+
+    def takenames1(self):
+        #Player1name = Player1name
+        #Player1name = "derp"
+        return Player1name
+
+    def takenames2(self):
+        #Player2name = Player2name
+        return Player2name
+
+    def endmessage(self):
+        print("\n Thank you for playing our pig game =) See you soon again!")
+        print("Players: " + t.takenames1() + " and " + t.takenames2())
+       # h.starth()
+
+    def cheat(self):
+        global cheatcode
+        self.cheatcode = False
+        global cheatpoints
+        global blockround 
+        blockround = False 
+        cheatpoints = 0
+        cheatcode = True
+        if cheatcode == True:
+            cheatpoints += 100
+            print(Player1name + " activated cheating")
+
+
+
 
 
 
 if __name__ == "__main__":
-    t = Test()
+    t = Pig()
+    #h = Highscore1()
     t.main()
+
+"""
+loop
+graphics greeting
+One or Two players?
+Input options: Roll or Hold, change name, highscore, rules, restart, cheat, AI difficulty
+(Error catches and ignore inputs that are not numbers)
+player 1 name and start
+add rolled numbers together into a temp_save1
+if roll 1, make saved numbers = 0, break
+If hold, add temp_save1 into score1, break
+
+player 2 name and start
+add rolled numbers together into a temp_save2
+if roll 1, make saved numbers = 0, break
+If hold, add temp_save2 into score2
+loop back
+
+If reaches >=100 points - You win! Play again? (run def start)
+Make readMe
+
+Requirements.txt 
+License.md
+Follow PEP 20 guidelines
+
+
+"""

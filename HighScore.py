@@ -8,22 +8,31 @@
 #!/usr/bin/env python3
 # -- coding: utf-8 --
 
+from DiceGame import Pig
+#from DiceGame import takenames2
+#from Pig import takenames1
+
+
+class HighScore1(Pig):
+
+
+    def init(self, Player1name, Player2name):
+        super().init(Player1name, Player2name)
+        Player1name = Player1name
+        Player2name = Player2name
 
 
 
-
-class HighScore1():
-    pass
-
-
-class test():
 
     def read_log(self):
-        self.playername = "johan"
-        self.score = (45)
+        Pn1 = ttt
+       # Playername2;
+        self.score5 = (45)
         try:
-            with open('log.txt', 'a') as file_open:
-                line = "{} has total wins of {}\n".format(self.playername, self.score)
+            with open('log.txt', 'a') as file_open: # C:\Users\46707 saved in that area. 
+                line = "{} has total wins of {}\n".format(Pn1, self.score5)
+                #line = "{} has total wins of {}\n".format(Playername2, self.score5)
+
                 file_open.write(line)
 
 
@@ -37,8 +46,11 @@ class test():
             print('An error occurred while trying to read the file.')
 
 
-    def start(self):
-        a.read_log()
+    def starth(self):
+        h.read_log()
 
-a = test()
-a.start()
+
+b = Pig()
+ttt = b.takenames1()
+h = HighScore1()
+h.starth()
