@@ -1,4 +1,5 @@
 
+
 """
 Dice game
 
@@ -91,8 +92,9 @@ class Pig():
         print("2. Upload your score to the highscore list.")
         print("3. History of rolls.")
         print("4. AI intelligence.")
-        print("5. Cheat")
-        print("6. Return to the match.")
+        print("5. Cheat (ONLY FOR GOOD PURPOSE)")
+        print("6. Restart game")
+        print("7. Return to the match.")
         self.optionChoice = input("Enter the number of your choice: ")
         #while optionChoice != 5:
         if self.optionChoice == "1":
@@ -112,8 +114,12 @@ class Pig():
         elif self.optionChoice == "5":
             t.cheat()
             t.gamerun()  
-
+        
         elif self.optionChoice == "6":
+            t.gamerun()
+
+
+        elif self.optionChoice == "7":
             if twoplay == "no":
                 t.gamerun()   
         
@@ -131,7 +137,6 @@ class Pig():
     def history(self):
         print("History is a work in progress.")
         t.options()
-         
 
     def namePlayer1(self):
         global Player1name
@@ -166,50 +171,49 @@ class Pig():
         #Player2name = input("Input the name for Player 2: ")
         print("The players in this duel are: " + Player1name + " and " + Player2name)
         t.multiplayergame()
-
+     
 
     def gamerun(self):
+        global player1score
+        player1score = 0
+        global player2score
+        player2score = 0
 
-        self.player1score = 0
-        self.player2score = 0  
 
-
-        while (self.player1score < 100 and self.player2score < 100):
+        while (player1score < 100 and player2score < 100):
            # print("Your current score is: {} \n" .format(self.player1score))
 
-            self.player1score = self.player1score + t.playermove() + cheatpoints
-            print(Player1name + ", your current score is: {} \n" .format(self.player1score))
-            if(self.player1score < 100):
-                self.player2score = self.player2score + t.computermove()
-                print("The AI have a current score of: {}".format(self.player2score))
+            player1score = player1score + t.playermove()
+            print(Player1name + ", your current score is: {} \n" .format(player1score))
+            if(player1score < 100):
+                player2score = player2score + t.computermove()
+                print("The AI have a current score of: {}".format(player2score))
                 print()
-               
-        if (self.player1score > self.player2score):
+
+        if (player1score > player2score):
             print("Congrats!! You won! :D")
         else:
-            print("Sorry! The AI was better this time! :( \nBetter luck next time ;)")
-        
+            print("Sorry! The AI was better this time! :frowning: \nBetter luck next time ;)")
+
 
     def multiplayergame(self):
-        self.player1score = 0
-        self.player2score = 0
-        while (self.player1score < 100 and self.player2score < 100):
-            self.player1score = self.player1score + t.playermove()
-            print(Player1name + ", your current score is: {} \n" .format(self.player1score))
-            if(self.player1score < 100):
-                self.player2score = self.player2score + t.player2move()
-                print(Player2name + ", your current score is: {} \n" .format(self.player2score))
-        if (self.player1score > self.player2score):
+        player1score = 0
+        player2score = 0
+        while (player1score < 100 and player2score < 100):
+            player1score = player1score + t.playermove()
+            print(Player1name + ", your current score is: {} \n" .format(player1score))
+            if(player1score < 100):
+                player2score = player2score + t.player2move()
+                print(Player2name + ", your current score is: {} \n" .format(player2score))
+        if (player1score > player2score):
             print("Congrats!!" + Player1name + ", you won! :D")
-        elif (self.player1score < self.player2score):
+        elif (player1score < player2score):
             print("Congrats!!" + Player2name + ", you won! :D")
 
 
     def playermove(self):
-    
         self.macthscore = 0
         self.newround = True
-    
         while self.newround == True:
             self.rolling = t.Dicerolling()
             if (self.rolling == 1):
@@ -322,6 +326,13 @@ class Pig():
         self.Diceupperside = int(random.random()*6+1)
         return self.Diceupperside
 
+    
+    def cheat(self):
+        self.player1score = 100
+        print(Player1name + " have activated cheating!!")
+
+
+
     def takenames1(self):
         #Player1name = Player1name
         #Player1name = "derp"
@@ -329,30 +340,29 @@ class Pig():
 
     def takenames2(self):
         #Player2name = Player2name
+        Player2name = "test"
         return Player2name
+
+    def takescores1(self):
+        #player1score = player1score
+        sc1 = player1score 
+        return sc1
+
+    def takescores2(self):
+        sc2 = player2score 
+        return sc2
+        
+
 
     def endmessage(self):
         print("\n Thank you for playing our pig game =) See you soon again!")
-        print("Players: " + t.takenames1() + " and " + t.takenames2())
-       # h.starth()
-
-    def cheat(self):
-        global cheatcode
-        self.cheatcode = False
-        global cheatpoints
-        global blockround 
-        blockround = False 
-        cheatpoints = 0
-        cheatcode = True
-        if cheatcode == True:
-            cheatpoints += 100
-            print(Player1name + " activated cheating")
-
-
-
-
-
-
+        print("Player 1: " + t.takenames1() + " " + str(t.takescores1()) + " points")
+        print("Player 2: " + t.takenames2() + " " + str(t.takescores2()) + " points")
+        
+        from HighScore import HighScore1
+        h = HighScore1()
+        h.starth()
+   
 if __name__ == "__main__":
     t = Pig()
     #h = Highscore1()
