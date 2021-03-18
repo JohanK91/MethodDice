@@ -20,6 +20,7 @@ def custom_func_x(x, const, power):
 """ 
 #import DiceGame
 from DiceGame import Pig
+from Game import game
 
 
 class Histogram(Pig):
@@ -59,7 +60,7 @@ class Histogram(Pig):
             global cheatcode
             cheatcode = True
             print("A player have just cheated!!")
-            p.cheat1(self)
+            game.cheat1(self)
 
             #i.cheatcode()
             #t.cheat()

@@ -6,9 +6,8 @@ spara nummer
 om ett, player2s tur
 om inte ett, rulla igen, eller hold
 om rulla igen, plussa nytt nummer med sparat nummer
-hold eller rulla igen, tills ett
+hold eller rulla igen, tills ett1
 """
-import random
 
 
 
@@ -172,87 +171,7 @@ class Pig():
         #Player2name = input("Input the name for Player 2: ")
         print("The players in this duel are: " + self.Player1name + " and " + self.Player2name)
         t.multiplayergame()
-     
-
-    def playermove(self):
-        self.macthscore = 0
-        self.newround = True
-        while self.newround == True:
-            self.rolling = t.Dicerolling()
-            if (self.rolling == 1):
-                print(self.Player1name + ", your dice showed a {}".format(self.rolling))
-                self.macthscore = 0
-                self.newround = False
-            else:
-                print(self.Player1name + ", your dice showed a {}".format(self.rolling))
-                self.macthscore = self.macthscore + self.rolling
-                print("Your score for this round is {}".format(self.macthscore))
-                self.newroundchoice = input(self.Player1name + ", do you want to roll again? (y = yes) & (n = no) & (q = options)")
-                if (self.newroundchoice == "y" or self.newroundchoice == "Y"):
-                    self.newround = True
-                elif (self.newroundchoice == "n" or self.newroundchoice == "N"):
-                    self.newround = False
-                elif (self.newroundchoice == "q" or self.newroundchoice == "Q"):
-                    t.options()
-                else: 
-                    print("Sorry, I could not understand that! :*( \nCan you please only enter a y or an n or a q!")
-                    print("Let´s make a new try! :)\n")
-                    self.newroundchoice = input(self.Player1name + ", do you want to roll again? (y = yes) & (n = no) & (q = options)")
-        print("Turn over!")
-    # print(Player1name + "'s turn now.")
-        return self.macthscore
-
-
-    def player2move(self):
-        self.macthscore = 0
-        self.newround = True
-        while self.newround == True:
-            self.rolling = t.Dicerolling()
-            if (self.rolling == 1):
-                print(self.Player2name + ", your dice showed a {}".format(self.rolling))
-                self.macthscore = 0
-                self.newround = False
-            else:
-                print(self.Player2name + ", your dice showed a {}".format(self.rolling))
-                self.macthscore = self.macthscore + self.rolling
-                print("Your score for this round is {}".format(self.macthscore))
-                self.newroundchoice = input(self.Player2name + ", do you want to roll again? (y = yes) & (n = no) & (q = options)")
-                if (self.newroundchoice == "y" or self.newroundchoice == "Y"):
-                    self.newround = True
-                elif (self.newroundchoice == "n" or self.newroundchoice == "N"):
-                    self.newround = False
-                elif (self.newroundchoice == "q" or self.newroundchoice == "Q"):
-                    t.options()
-                else: 
-                    print("Sorry, I could not understand that! :*( \nCan you please only enter a y or an n or a q!")
-                    print("Let´s make a new try! :)\n")
-                    self.newroundchoice = input(self.Player2name + ", do you want to roll again? (y = yes) & (n = no) & (q = options)")
-        print("Turn over!")
-    # print(Player1name + "'s turn now.")
-        return self.macthscore
-
-    def computermove(self):
-        self.macthscore = 0
-        self.newround = True
-        self.mode = 0
-        #comproll = True
-        while self.newround == True:
-            self.rolling = t.Dicerolling()
-            if self.rolling == 1:
-                print("The AI rolled a 1")
-                self.macthscore = 0 
-                self.newround = False
-            else:
-                print("The AI rolled a {}".format(self.rolling))
-                self.macthscore = self.macthscore + self.rolling
-                if self.macthscore < self.mode: # and comproll == True:
-                    print("The AI has chosen to roll again!")
-                    #mode = random.randint(5, 30)
-                else:
-                    self.newround = False
-        print("The AI's turn have ended. It is now " + self.Player1name + "'s turn to roll. Prepare yourself.")
-       # print("The AI have a current score of: {}".format(self.macthscore))
-        return self.macthscore
+    
 
     
     def AIsetting(self):
@@ -304,9 +223,6 @@ class Pig():
         return newround
 
 
-    def Dicerolling(self):
-        self.Diceupperside = int(random.random()*6+1)
-        return self.Diceupperside
 
     def cheatcode(self):
         global cheatcode

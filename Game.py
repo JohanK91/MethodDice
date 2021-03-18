@@ -1,6 +1,8 @@
 from DiceGame import Pig
+import Dice
+import Histogram
+class game():
 
-class game():   
     def gamerun(self):
         cheatpoints = 0
         global player1score
@@ -14,10 +16,10 @@ class game():
         while (self.player1score < 100 and self.player2score < 100):
            # print("Your current score is: {} \n" .format(self.player1score))
             
-            self.player1score = self.player1score + self.playermove() + game.cheat1(self) # + cheatpoints
+            self.player1score = self.player1score + game.playermove(self) + game.cheat1(self) # + cheatpoints
             print(self.Player1name + ", your current score is: {} \n" .format(self.player1score))
             if(self.player1score < 100):
-                self.player2score = self.player2score + t.computermove()
+                self.player2score = self.player2score + game.computermove(self)
                 print("The AI have a current score of: {}".format(self.player2score))
                 print()
                
@@ -38,7 +40,7 @@ class game():
         cheatcode = False
 
         while (self.player1score < 100 and self.player2score < 100):
-            self.player1score = self.player1score + self.playermove() + self.cheat1() # + cheatpoints
+            self.player1score = self.player1score + self.playermove() + game.cheat1(self) # + cheatpoints
             print(self.Player1name + ", your current score is: {} \n" .format(self.player1score))
             if(self.player1score < 100):
                 self.player2score = self.player2score + self.player2move() + self.cheat1(self)
@@ -48,14 +50,17 @@ class game():
         elif (self.player1score < self.player2score):
             print("Congrats!! " + self.Player2name + ", you won! :D")
 
-
+    def cheatcode(self):
+        global cheatcode
+        cheatcode = self.cheatcode
+        #cheatcode = True
+        return cheatcode
 
     def cheat1(self):
-        import Histogram
         global cheatpoints 
         cheatpoints = 0
         global cheatcode
-        self.cheatcode = Histogram.Histogram.cheatcode(self)
+        self.cheatcode = game.cheatcode(self)
 
         if self.cheatcode == True:
             cheatpoints += 101
@@ -65,10 +70,11 @@ class game():
 
 
     def playermove(self):
+        
         self.macthscore = 0
         self.newround = True
         while self.newround == True:
-            self.rolling = t.Dicerolling()
+            self.rolling = Dice.dice.Dicerolling(self)
             if (self.rolling == 1):
                 print(self.Player1name + ", your dice showed a {}".format(self.rolling))
                 self.macthscore = 0
@@ -83,7 +89,7 @@ class game():
                 elif (self.newroundchoice == "n" or self.newroundchoice == "N"):
                     self.newround = False
                 elif (self.newroundchoice == "q" or self.newroundchoice == "Q"):
-                    t.options()
+                    Histogram.Histogram.options(self)
                 else: 
                     print("Sorry, I could not understand that! :*( \nCan you please only enter a y or an n or a q!")
                     print("Let´s make a new try! :)\n")
@@ -94,10 +100,11 @@ class game():
 
 
     def player2move(self):
+        
         self.macthscore = 0
         self.newround = True
         while self.newround == True:
-            self.rolling = t.Dicerolling()
+            self.rolling = Dice.dice.Dicerolling(self)
             if (self.rolling == 1):
                 print(self.Player2name + ", your dice showed a {}".format(self.rolling))
                 self.macthscore = 0
@@ -117,6 +124,7 @@ class game():
                     print("Sorry, I could not understand that! :*( \nCan you please only enter a y or an n or a q!")
                     print("Let´s make a new try! :)\n")
                     self.newroundchoice = input(self.Player2name + ", do you want to roll again? (y = yes) & (n = no) & (q = options)")
+
         print("Turn over!")
     # print(Player1name + "'s turn now.")
         return self.macthscore
@@ -127,7 +135,7 @@ class game():
         self.mode = 0
         #comproll = True
         while self.newround == True:
-            self.rolling = t.Dicerolling()
+            self.rolling = Dice.dice.Dicerolling(self)
             if self.rolling == 1:
                 print("The AI rolled a 1")
                 self.macthscore = 0 

@@ -6,3 +6,7 @@ Player 1: victor have total points of 101
 Player 2: AI have total points of 77
 
 New Game
+Player 1: victor have total points of 4
+Player 2: AI have total points of 0
+
+New Game
