@@ -2,4 +2,6 @@
 
 
 #starts the program by running main.py which runs the start().
-start()
+import HighScore 
+
+user 

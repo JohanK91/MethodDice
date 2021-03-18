@@ -1,3 +1,8 @@
+Player 1: f have total points of 17
+Player 2: AI have total points of 43
 
-johan has total wins of 45
-johan has total wins of 45
+New Game
+Player 1: victor have total points of 101
+Player 2: AI have total points of 77
+
+New Game

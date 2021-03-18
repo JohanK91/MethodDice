@@ -8,62 +8,30 @@
 #!/usr/bin/env python3
 # -- coding: utf-8 --
 
+
 from DiceGame import Pig
 #import DiceGame
-#from DiceGame import takenames2
-#from Pig import takenames1
 
-
-class HighScore1(Pig):
-
-   
-  #  def __init__(self, Player1name, Player2name):
-   #     super().__init__(Player1name, Player2name)
-    #    Player1name = Player1name
-     #   Player2name = Player2name
-
-    """
-
-    def takenames1(self):
-        namevar1 = super(HighScore1, self).takenames1()
-        #print(var)
-        return var1
-
-    def takenames2(self):
-        namevar2 = super(HighScore1, self).takenames2()
-        #print(var)
-        return var2
-
-
-    def takescores1(self):
-        scorevar1 = super(HighScore1, self).takescores1()
-        #print(var)
-        return scorevar1
-    
-    def takescores2(self):
-        scorevar2 = super(HighScore1, self).takescores2()
-        #print(var)
-        return scorevar2
-    """
-
+class HighScore(Pig):
 
     def read_log(self):
-        
-        self.Pn1 = b.takenames1()
-        self.Pn2 = b.takenames2()
-        self.S1 = b.takescores1()
-        self.S2 = b.takescores2()
+        read_log = "Score uploaded"
+        self.Pn1 = Pig.takenames1(self)
+        self.Pn2 = Pig.takenames2(self)
+        self.S1 = Pig.takescores1(self)
+        self.S2 = Pig.takescores2(self)
+        print(read_log)
 
 
-       # Playername2;
-        self.score5 = (45)
         try:
             with open('log.txt', 'a') as file_open: # C:\Users\46707 saved in that area. 
-                line = "{} has total wins of {}\n".format(self.Pn1, self.S1)
-                line = "{} has total wins of {}\n".format(self.Pn2, self.S2)
+                line1 = "Player 1: {} have total points of {}\n".format(self.Pn1, self.S1)
+                line2 = "Player 2: {} have total points of {}\n".format(self.Pn2, self.S2)
+                line3 = ("\nNew Game\n")
 
-                file_open.write(line)
-
+                file_open.write(line1)
+                file_open.write(line2)
+                file_open.write(line3)
 
         except IOError:
             print('An error occurred while trying to read the file.')
@@ -73,14 +41,3 @@ class HighScore1(Pig):
 
         except FileExistsError:
             print('An error occurred while trying to read the file.')
-
-
-    def starth(self):
-        h.read_log()
-       
-
-
-b = Pig()
-#ttt = b.takenames1()
-h = HighScore1()
-h.starth()

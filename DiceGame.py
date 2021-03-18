@@ -1,5 +1,3 @@
-
-
 """
 Dice game
 
@@ -12,23 +10,14 @@ hold eller rulla igen, tills ett
 """
 import random
 
-#from HighScore import HighScore1
 
-class testA():
-    def pp(self):
-        var = print(12)
-        print("derp")
-        return var
+
+
+#from HighScore import HighScore1
 
 
 class Pig(): 
-    def __init__(self):
-        self.var1 = 1
-        self.var2 = 2
 
-    def methodA(self):
-        self.var1 = self.var1 + self.var2
-        return self.var1
 
     def main(self):
  
@@ -75,7 +64,8 @@ class Pig():
         global twoplay
         twoplay = "no"    
         t.namePlayer1()
-        t.gamerun()
+        import Game
+        Game.game.gamerun(self)
 
 
     def TwoPlayers(self):
@@ -84,17 +74,22 @@ class Pig():
         twoplay = "yes"
         t.namePlayer1()
         t.namePlayer2()
-        t.multiplayer()
-       
+        import Game
+        Game.game.multiplayergame(self)
+
     def options(self):
+        import Histogram
+        Histogram.Histogram.options(self)
+        
+
+    """
         print("This is the options menu. Here you can do several things.")
         print("1. Change your name.")
         print("2. Upload your score to the highscore list.")
         print("3. History of rolls.")
         print("4. AI intelligence.")
-        print("5. Cheat (ONLY FOR GOOD PURPOSE)")
-        print("6. Restart game")
-        print("7. Return to the match.")
+        print("5. Cheat")
+        print("6. Return to the match.")
         self.optionChoice = input("Enter the number of your choice: ")
         #while optionChoice != 5:
         if self.optionChoice == "1":
@@ -103,23 +98,25 @@ class Pig():
                 t.namePlayer2()
 
         elif self.optionChoice == "2":
+            #HighScore.HighScore.read_log(self)
             t.highScore()
 
         elif self.optionChoice == "3":
             t.history()          
 
         elif self.optionChoice == "4":
-            t.AIsetting()   
-
+            t.AIsetting()  
+            #Intelligence.Intelligence.AIsetting(self)
+            
         elif self.optionChoice == "5":
-            t.cheat()
-            t.gamerun()  
-        
+            global cheatcode
+            cheatcode = True
+            print("A player have just cheated!!")
+
+            #t.cheat()
+            #t.gamerun()  
+
         elif self.optionChoice == "6":
-            t.gamerun()
-
-
-        elif self.optionChoice == "7":
             if twoplay == "no":
                 t.gamerun()   
         
@@ -129,10 +126,11 @@ class Pig():
         else:
             print("Please input a number between 1-5.")
             t.options    
+    """
 
     def highScore(self):
-        print("Highscore is a work in progress.")
-        t.options()
+        import HighScore
+        HighScore.HighScore.read_log(self)
 
     def history(self):
         print("History is a work in progress.")
@@ -141,9 +139,11 @@ class Pig():
     def namePlayer1(self):
         global Player1name
         global Player2name
-        Player2name = "AI"
-        Player1name = input("Input the name for Player 1: ")
-        print("The first player in this duel is: " + Player1name)
+        self.Player2name = "AI"
+        self.Player1name = input("Input the name for Player 1: ")
+        print("The first player in this duel is: " + self.Player1name)
+        #return Player1name
+
        # while 
       #  self.Player1name = var
         #Player1name = ""
@@ -159,57 +159,20 @@ class Pig():
        # if self.Player1name != "":
         #    return self.Player1name #namePlayer2()
         #else:
-    #return Player1name    
+    #return Player1name 
 
     def namePlayer2(self):
         global Player2name
-        Player2name = input("Input the name for Player 2: ")
-        print("The second player in this duel is: " + Player2name)
+        self.Player2name = input("Input the name for Player 2: ")
+        print("The second player in this duel is: " + self.Player2name)
+        #return Player2name
 
     def multiplayer(self):
         #Player1name = input("Input the name for Player 1: ")
         #Player2name = input("Input the name for Player 2: ")
-        print("The players in this duel are: " + Player1name + " and " + Player2name)
+        print("The players in this duel are: " + self.Player1name + " and " + self.Player2name)
         t.multiplayergame()
      
-
-    def gamerun(self):
-        global player1score
-        player1score = 0
-        global player2score
-        player2score = 0
-
-
-        while (player1score < 100 and player2score < 100):
-           # print("Your current score is: {} \n" .format(self.player1score))
-
-            player1score = player1score + t.playermove()
-            print(Player1name + ", your current score is: {} \n" .format(player1score))
-            if(player1score < 100):
-                player2score = player2score + t.computermove()
-                print("The AI have a current score of: {}".format(player2score))
-                print()
-
-        if (player1score > player2score):
-            print("Congrats!! You won! :D")
-        else:
-            print("Sorry! The AI was better this time! :frowning: \nBetter luck next time ;)")
-
-
-    def multiplayergame(self):
-        player1score = 0
-        player2score = 0
-        while (player1score < 100 and player2score < 100):
-            player1score = player1score + t.playermove()
-            print(Player1name + ", your current score is: {} \n" .format(player1score))
-            if(player1score < 100):
-                player2score = player2score + t.player2move()
-                print(Player2name + ", your current score is: {} \n" .format(player2score))
-        if (player1score > player2score):
-            print("Congrats!!" + Player1name + ", you won! :D")
-        elif (player1score < player2score):
-            print("Congrats!!" + Player2name + ", you won! :D")
-
 
     def playermove(self):
         self.macthscore = 0
@@ -217,14 +180,14 @@ class Pig():
         while self.newround == True:
             self.rolling = t.Dicerolling()
             if (self.rolling == 1):
-                print(Player1name + ", your dice showed a {}".format(self.rolling))
+                print(self.Player1name + ", your dice showed a {}".format(self.rolling))
                 self.macthscore = 0
                 self.newround = False
             else:
-                print(Player1name + ", your dice showed a {}".format(self.rolling))
+                print(self.Player1name + ", your dice showed a {}".format(self.rolling))
                 self.macthscore = self.macthscore + self.rolling
                 print("Your score for this round is {}".format(self.macthscore))
-                self.newroundchoice = input(Player1name + ", do you want to roll again? (y = yes) & (n = no) & (q = options)")
+                self.newroundchoice = input(self.Player1name + ", do you want to roll again? (y = yes) & (n = no) & (q = options)")
                 if (self.newroundchoice == "y" or self.newroundchoice == "Y"):
                     self.newround = True
                 elif (self.newroundchoice == "n" or self.newroundchoice == "N"):
@@ -234,7 +197,7 @@ class Pig():
                 else: 
                     print("Sorry, I could not understand that! :*( \nCan you please only enter a y or an n or a q!")
                     print("Let´s make a new try! :)\n")
-                    self.newroundchoice = input(Player1name + ", do you want to roll again? (y = yes) & (n = no) & (q = options)")
+                    self.newroundchoice = input(self.Player1name + ", do you want to roll again? (y = yes) & (n = no) & (q = options)")
         print("Turn over!")
     # print(Player1name + "'s turn now.")
         return self.macthscore
@@ -246,14 +209,14 @@ class Pig():
         while self.newround == True:
             self.rolling = t.Dicerolling()
             if (self.rolling == 1):
-                print(Player2name + ", your dice showed a {}".format(self.rolling))
+                print(self.Player2name + ", your dice showed a {}".format(self.rolling))
                 self.macthscore = 0
                 self.newround = False
             else:
-                print(Player2name + ", your dice showed a {}".format(self.rolling))
+                print(self.Player2name + ", your dice showed a {}".format(self.rolling))
                 self.macthscore = self.macthscore + self.rolling
                 print("Your score for this round is {}".format(self.macthscore))
-                self.newroundchoice = input(Player2name + ", do you want to roll again? (y = yes) & (n = no) & (q = options)")
+                self.newroundchoice = input(self.Player2name + ", do you want to roll again? (y = yes) & (n = no) & (q = options)")
                 if (self.newroundchoice == "y" or self.newroundchoice == "Y"):
                     self.newround = True
                 elif (self.newroundchoice == "n" or self.newroundchoice == "N"):
@@ -263,7 +226,7 @@ class Pig():
                 else: 
                     print("Sorry, I could not understand that! :*( \nCan you please only enter a y or an n or a q!")
                     print("Let´s make a new try! :)\n")
-                    self.newroundchoice = input(Player2name + ", do you want to roll again? (y = yes) & (n = no) & (q = options)")
+                    self.newroundchoice = input(self.Player2name + ", do you want to roll again? (y = yes) & (n = no) & (q = options)")
         print("Turn over!")
     # print(Player1name + "'s turn now.")
         return self.macthscore
@@ -271,6 +234,7 @@ class Pig():
     def computermove(self):
         self.macthscore = 0
         self.newround = True
+        self.mode = 0
         #comproll = True
         while self.newround == True:
             self.rolling = t.Dicerolling()
@@ -281,17 +245,21 @@ class Pig():
             else:
                 print("The AI rolled a {}".format(self.rolling))
                 self.macthscore = self.macthscore + self.rolling
-                if self.macthscore < mode: # and comproll == True:
+                if self.macthscore < self.mode: # and comproll == True:
                     print("The AI has chosen to roll again!")
                     #mode = random.randint(5, 30)
                 else:
                     self.newround = False
-        print("The AI's turn have ended. It is now " + Player1name + "'s turn to roll. Prepare yourself.")
+        print("The AI's turn have ended. It is now " + self.Player1name + "'s turn to roll. Prepare yourself.")
        # print("The AI have a current score of: {}".format(self.macthscore))
         return self.macthscore
 
-
+    
     def AIsetting(self):
+        import Intelligence
+        Intelligence.Intelligence.AIsetting(self)
+
+    """    
         global mode
         #global comproll
         #comproll 
@@ -320,49 +288,84 @@ class Pig():
         else:
             print("Not all valid option. Try again.")
             t.AIsetting()
+    """  
+
+
+    def newroundFalse(self):
+        global newround
+        newround = self.newround
+        newround = False
+        return newround
+
+    def newroundTrue(self):
+        global newround
+        newround = self.newround
+        newround = True
+        return newround
 
 
     def Dicerolling(self):
         self.Diceupperside = int(random.random()*6+1)
         return self.Diceupperside
 
-    
-    def cheat(self):
-        self.player1score = 100
-        print(Player1name + " have activated cheating!!")
+    def cheatcode(self):
+        global cheatcode
+        cheatcode = self.cheatcode
+        return cheatcode 
 
+    def twoplay(self):
+        global twoplay
+        twoplay = self.twoplay
+        return twoplay 
 
+    def mode(self):
+        global mode
+        mode = self.mode
+        return mode
+
+    def cheatpoints(self):
+        global cheatpoints
+        cheatpoints = self.cheatpoints
+        return cheatpoints                   
 
     def takenames1(self):
-        #Player1name = Player1name
+        global Player1name
+        Player1name = self.Player1name
         #Player1name = "derp"
         return Player1name
 
     def takenames2(self):
-        #Player2name = Player2name
-        Player2name = "test"
+        global Player2name
+        Player2name = self.Player2name
+        #Player2name = "test"
         return Player2name
 
     def takescores1(self):
-        #player1score = player1score
-        sc1 = player1score 
-        return sc1
+        global player1score
+        player1score = self.player1score
+        return player1score
 
     def takescores2(self):
-        sc2 = player2score 
-        return sc2
-        
-
-
+        global player2score
+        player2score = self.player2score
+        return player2score
+   
     def endmessage(self):
-        print("\n Thank you for playing our pig game =) See you soon again!")
+        print("\nThank you for playing our pig game =) See you soon again!")
+
         print("Player 1: " + t.takenames1() + " " + str(t.takescores1()) + " points")
         print("Player 2: " + t.takenames2() + " " + str(t.takescores2()) + " points")
         
-        from HighScore import HighScore1
-        h = HighScore1()
-        h.starth()
-   
+        #HighScore.HighScore.read_log(self)
+        #t.read_log()
+        t.highScore()
+        
+      #  from HighScore import HighScore1
+      #  h = HighScore1()
+      #  h.starth()
+
+       
+
 if __name__ == "__main__":
     t = Pig()
     #h = Highscore1()
