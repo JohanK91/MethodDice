@@ -1,34 +1,15 @@
 
-"""
+#from Intelligence import Intelligence
 
-def hello_world():
-    
-    x = "Testing"
-    return x
-   #pass
-
-
-def hell():
-    return "Derp"
-
-def create_num_list(length):
-    return [x for x in range(length)]
-
-def custom_func_x(x, const, power):
-    return const * (x) ** power    
-    
-""" 
-#import DiceGame
-from DiceGame import Pig
-from Game import game
-
-
-class Histogram(Pig):
+class Histogram:
 
     def options(self):
-        self.twoplay = Pig.twoplay(self)
-        global cheatcode
-        self.cheatcode = False
+        import Player
+        p = Player.player
+        import Game
+        self.twoplay = Player.player.twoplayR(self)
+        #global cheatcode
+        #self.cheatcode = False
 
         print("This is the options menu. Here you can do several things.")
         print("1. Change your name.")
@@ -37,52 +18,70 @@ class Histogram(Pig):
         print("4. AI intelligence.")
         print("5. Cheat")
         print("6. Return to the match.")
-        
+
         self.optionChoice = input("Enter the number of your choice: ")
         #while optionChoice != 5:
+       
         if self.optionChoice == "1":
+            # change name
             p.namePlayer1(self)
-            if self.twoplay == "yes":
+            if self.twoplay == True:
+                Game.game.newroundTrue(self)
                 p.namePlayer2(self)
 
         elif self.optionChoice == "2":
             #HighScore.HighScore.read_log(self)
-            p.highScore(self)
+            # upload score to log.txt
+            import HighScore
+            Game.game.newroundTrue(self)
+            HighScore.HighScore.read_log(self)
 
         elif self.optionChoice == "3":
-            p.history(self)          
+            # History of rolls
+            Game.game.newroundTrue(self)
+            Histogram.history(self)
 
         elif self.optionChoice == "4":
-            p.AIsetting(self)  
+            # AI settings
+            import Intelligence
+            Game.game.newroundTrue(self)
+            Intelligence.Intelligence.AIsetting(self)
             #Intelligence.Intelligence.AIsetting(self)
-            
+
         elif self.optionChoice == "5":
-            global cheatcode
-            cheatcode = True
+            # cheat
             print("A player have just cheated!!")
-            game.cheat1(self)
+            Game.game.cheatT(self)
+            Game.game.newroundFalse(self)
+            #Game.game.cheatingR(self)
+            
 
             #i.cheatcode()
             #t.cheat()
-            #t.gamerun()  
+            #t.gamerun()
 
         elif self.optionChoice == "6":
-            if self.twoplay == "no":
-                p.gamerun(self)   
-        
-            elif self.twoplay == "yes":
-                p.multiplayergame(self)
+            # return to game
+            Game.game.newroundTrue(self)
+            
+       #     if self.twoplay == False:
+        #        Game.game.newroundTrue(self)
+                #Game.game.gamerun(self)
+
+         #   elif self.twoplay == True:
+          #      Game.game.newroundTrue(self)
+                #Game.game.multiplayergame(self)
 
         else:
             print("Please input a number between 1-5.")
-            h.options()    
+            h.options()
 
-    
-    def cheatcode(self):
-        global cheatcode
-        cheatcode = self.cheatcode
-        #cheatcode = True
-        return cheatcode
 
-p = Pig
+
+    def history(self):
+        print("hello")
+        print("This is history :)")
+
+
+#i = Intelligence()
 h = Histogram()

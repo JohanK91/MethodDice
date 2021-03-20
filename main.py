@@ -1,7 +1,13 @@
 """main file"""
 
+class main:
+    
+    def main(self):
+        import Intelligence
 
-#starts the program by running main.py which runs the start().
-import HighScore 
+        Intelligence.Intelligence.start(self)
+        Intelligence.Intelligence.endmessage(self)
 
-user 
+if __name__ == "__main__":
+    t = main()
+    t.main()
