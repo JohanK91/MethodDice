@@ -8,7 +8,7 @@ om inte ett, rulla igen, eller hold
 om rulla igen, plussa nytt nummer med sparat nummer
 hold eller rulla igen, tills ett1
 """
-import random
+
 
 #from HighScore import HighScore1
 
@@ -19,68 +19,6 @@ import random
 
 class Pig(): 
 
-
-    def main(self):
- 
-       # global Player1name
-       # global Player2name
-       # Player1name = ""
-       # Player2name = ""       
-        t.start()
-        t.endmessage()
-
-
-    def start(self):
-        print("Welcome to the Dice Game of life. We will play using the rules of Pig. One dice.")
-        print("Your rolled numbers will add together.")
-        print("You may also hold at anytime, which will add your numbers together and give the turn to the other player.")
-        print("The catch is that if you roll a 1, your turn is over and your temporary points are wasted.")
-        t.numOfPlayers()
-
-
-    def numOfPlayers(self):
-        print("Now, do you wish to play with 1 or 2 players?")
-        print("1. 1 player, and AI opponent.")
-        print("2. 2 players.")
-        print("3. Quit.")
-
-        num = input()
-        if num == "1":
-            #OneplayerTF = True
-            t.OnePlayer()
-
-        elif num == "2":
-            #OnePlayerTF = False
-            t.TwoPlayers()
-
-        else:
-            print("Returning to menu!")
-            t.start()
-
-
-    def OnePlayer(self):
-        print("One player chosen.")
-        print("It will be you versus the AI.")
-        t.AIsetting()
-        global twoplay
-        twoplay = "no"    
-        t.namePlayer1()
-        import Game
-        Game.game.gamerun(self)
-
-
-    def TwoPlayers(self):
-        print("Two players chosen.")
-        global twoplay
-        twoplay = "yes"
-        t.namePlayer1()
-        t.namePlayer2()
-        import Game
-        Game.game.multiplayergame(self)
-
-    def options(self):
-        import Histogram
-        Histogram.Histogram.options(self)
         
 
     """
@@ -129,21 +67,7 @@ class Pig():
             t.options    
     """
 
-    def highScore(self):
-        import HighScore
-        HighScore.HighScore.read_log(self)
-
-    def history(self):
-        print("History is a work in progress.")
-        t.options()
-
-    def namePlayer1(self):
-        global Player1name
-        global Player2name
-        self.Player2name = "AI"
-        self.Player1name = input("Input the name for Player 1: ")
-        print("The first player in this duel is: " + self.Player1name)
-        #return Player1name
+ 
 
        # while 
       #  self.Player1name = var
@@ -162,23 +86,6 @@ class Pig():
         #else:
     #return Player1name 
 
-    def namePlayer2(self):
-        global Player2name
-        self.Player2name = input("Input the name for Player 2: ")
-        print("The second player in this duel is: " + self.Player2name)
-        #return Player2name
-
-    def multiplayer(self):
-        #Player1name = input("Input the name for Player 1: ")
-        #Player2name = input("Input the name for Player 2: ")
-        print("The players in this duel are: " + self.Player1name + " and " + self.Player2name)
-        t.multiplayergame()
-    
-
-    
-    def AIsetting(self):
-        import Intelligence
-        Intelligence.Intelligence.AIsetting(self)
 
     """    
         global mode
@@ -212,82 +119,9 @@ class Pig():
     """  
 
 
-    def newroundFalse(self):
-        global newround
-        newround = self.newround
-        newround = False
-        return newround
-
-    def newroundTrue(self):
-        global newround
-        newround = self.newround
-        newround = True
-        return newround
 
 
 
-    def cheatcode(self):
-        global cheatcode
-        cheatcode = self.cheatcode
-        return cheatcode 
-
-    def twoplay(self):
-        global twoplay
-        twoplay = self.twoplay
-        return twoplay 
-
-    def mode(self):
-        global mode
-        mode = self.mode
-        return mode
-
-    def cheatpoints(self):
-        global cheatpoints
-        cheatpoints = self.cheatpoints
-        return cheatpoints                   
-
-    def takenames1(self):
-        global Player1name
-        Player1name = self.Player1name
-        #Player1name = "derp"
-        return Player1name
-
-    def takenames2(self):
-        global Player2name
-        Player2name = self.Player2name
-        #Player2name = "test"
-        return Player2name
-
-    def takescores1(self):
-        global player1score
-        player1score = self.player1score
-        return player1score
-
-    def takescores2(self):
-        global player2score
-        player2score = self.player2score
-        return player2score
-   
-    def endmessage(self):
-        print("\nThank you for playing our pig game =) See you soon again!")
-
-        print("Player 1: " + t.takenames1() + " " + str(t.takescores1()) + " points")
-        print("Player 2: " + t.takenames2() + " " + str(t.takescores2()) + " points")
-        
-        #HighScore.HighScore.read_log(self)
-        #t.read_log()
-        t.highScore()
-        
-      #  from HighScore import HighScore1
-      #  h = HighScore1()
-      #  h.starth()
-
-       
-
-if __name__ == "__main__":
-    t = Pig()
-    #h = Highscore1()
-    t.main()
 
 """
 loop

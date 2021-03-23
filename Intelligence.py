@@ -89,6 +89,64 @@ class Intelligence:
         return player2score
 
 
+    # functions from dicegame
+
+    def newroundFalse(self):
+        global newround
+        newround = self.newround
+        newround = False
+        return newround
+
+    def newroundTrue(self):
+        global newround
+        newround = self.newround
+        newround = True
+        return newround
+
+
+
+    def cheatcode(self):
+        global cheatcode
+        cheatcode = self.cheatcode
+        return cheatcode 
+
+    def twoplay(self):
+        global twoplay
+        twoplay = self.twoplay
+        return twoplay 
+
+    def mode(self):
+        global mode
+        mode = self.mode
+        return mode
+
+    def cheatpoints(self):
+        global cheatpoints
+        cheatpoints = self.cheatpoints
+        return cheatpoints                   
+
+    def takenames1(self):
+        global Player1name
+        Player1name = self.Player1name
+        #Player1name = "derp"
+        return Player1name
+
+    def takenames2(self):
+        global Player2name
+        Player2name = self.Player2name
+        #Player2name = "test"
+        return Player2name
+
+    def takescores1(self):
+        global player1score
+        player1score = self.player1score
+        return player1score
+    
+    def takescores2(self):
+        global player2score
+        player2score = self.player2score
+        return player2score
+
     
     def endmessage(self):
         import HighScore
