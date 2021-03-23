@@ -58,7 +58,7 @@ class player:
         #Player1name = input("Input the name for Player 1: ")
         #Player2name = input("Input the name for Player 2: ")
         #print("The players in this duel are: " + self.Player1name + " and " + self.Player2name)
-        print("The players in this duel are: " + player.Player1nameR(self) + " and " + player.Player2nameR(self))
+        print("\nThe players in this duel are: " + player.Player1nameR(self) + " and " + player.Player2nameR(self))
         Game.game.multiplayergame(self)
 
 

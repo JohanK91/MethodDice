@@ -20,7 +20,7 @@ class Intelligence:
         print("2. 2 players.")
         print("3. Quit.")
 
-        num = input()
+        num = input("Enter your choice here: ")
         if num == "1":
             Player.player.OnePlayer(self)
 
@@ -91,17 +91,6 @@ class Intelligence:
 
     # functions from dicegame
 
-    def newroundFalse(self):
-        global newround
-        newround = self.newround
-        newround = False
-        return newround
-
-    def newroundTrue(self):
-        global newround
-        newround = self.newround
-        newround = True
-        return newround
 
 
 
