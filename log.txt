@@ -14,3 +14,7 @@ Player 1: d have total points of 102
 Player 2: The AI have total points of 0
 
 New Game
+Player 1: d have total points of 135
+Player 2: The AI have total points of 41
+
+New Game
