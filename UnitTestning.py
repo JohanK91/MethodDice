@@ -1,32 +1,26 @@
-import Player
 import unittest
 
 class playertest(unittest.TestCase):
+    def testdice(self):
+        import Dice
+        number = Dice.dice.Dicerolling(self)
+        res = number
+        exp = 1 <= res <= 6
 
-    def testplayer(self):
-        res = Player.player("name")
-        exp = Player.player
-
-        self.assertIsInstance(res, exp)
-
+        self.assertTrue(exp)
+    
     def testname(self):
-        playerone = Player.player("name")
-        res = playerone.get_name()
+        import Player
+        playerone = Player.player.namePlayer1(self)
+        res = playerone.Player1nameR(self)
         exp = "name"
 
         self.assertEqual(res, exp)
 
-    def test_score(self):
-        playerone = Player.player("name")
-        res = playerone.get_score()
-        exp = 0
 
-        self.assertEqual(res, exp)
 
-    def addscore(self):
-        playerone = Player.player("name")
-        playerone.add_score(10)
-        res = playerone.get_score()
-        exp = 10
 
-        self.assertEqual(res, exp)
+
+
+if __name__ == '__main__':
+    unittest.main()
