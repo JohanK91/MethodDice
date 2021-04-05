@@ -73,8 +73,13 @@ class Histogram:
                 #Game.game.multiplayergame(self)
 
         else:
-            print("Please input a number between 1-5.")
+            print("Please input a number between 1-6.")
             h.options()
+    
+    def optionChoiceR(self):
+        global optionChoice
+        optionChoice =  self.optionChoice
+        return optionChoice
 
 
 
