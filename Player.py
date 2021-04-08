@@ -1,4 +1,3 @@
-
 class player:
     
     def OnePlayer(self):
@@ -35,7 +34,6 @@ class player:
         global Player1name
         #global Player2name
         #self.Player2name = "AI"
-        self.Player1name = "name"
 
         self.Player1name = input("Input the name for Player 1: ")
         print("The first player in this duel is: " + self.Player1name)
@@ -67,6 +65,18 @@ class player:
         global Player1name
         Player1name = self.Player1name
         return Player1name
+
+    def Player1nameHard(self):
+        global Player1name
+        Player1name = self.Player1name
+        Player1name = "Player1"
+        return Player1name
+
+    def Player2nameHard(self):
+        global Player2name
+#        Player2name = self.Player2name
+        Player2name = "Player2"
+        return Player2name
 
     def Player2nameR(self):
         global Player2name
@@ -108,5 +118,3 @@ class player:
     #    oneplay = self.oneplay
        # oneplay = True
         return oneplay  
-
-

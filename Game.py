@@ -229,7 +229,8 @@ class game():
                 print(self.Player2name + ", your dice showed a {}".format(self.rolling))
                 self.macthscore = self.macthscore + self.rolling
                 print("Your score for this round is {}".format(self.macthscore))
-                self.newroundchoice = input(self.Player2name + ", do you want to roll again? (y = yes) & (n = no) & (q = options)")
+                print(self.Player2name + ", do you want to roll again? (y = yes) & (n = no) & (q = options)")
+                self.newroundchoice = input("Enter your choice here: ")
                 
                 if (self.newroundchoice == "y" or self.newroundchoice == "Y"):
                     game.cheatF(self)
