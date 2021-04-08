@@ -35,6 +35,7 @@ class player:
         global Player1name
         #global Player2name
         #self.Player2name = "AI"
+        self.Player1name = "name"
 
         self.Player1name = input("Input the name for Player 1: ")
         print("The first player in this duel is: " + self.Player1name)

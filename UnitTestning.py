@@ -1,6 +1,12 @@
 import unittest
 
+
 class playertest(unittest.TestCase):
+
+    
+
+
+    
     def mtestdice(self):
         import Dice
         number = Dice.dice.Dicerolling(self)
@@ -8,8 +14,9 @@ class playertest(unittest.TestCase):
         exp = 1 <= res <= 6
 
         self.assertTrue(exp)
+
     
-    def stestname(self):
+    def ctestname(self):
         import Player
         res = Player.player.namePlayer1(self)
         exp = Player.player.Player1nameR(self)
@@ -17,6 +24,7 @@ class playertest(unittest.TestCase):
         self.assertEqual(res, exp)
 
     def stestname2(self):
+
         import Player
         Player.player.twoplayT(self)
 
@@ -32,24 +40,43 @@ class playertest(unittest.TestCase):
         exp = Player.player.Player2nameR(self)
         self.assertEqual(res, exp)
     
-    def stestoptionmenu(self):
+    def dtestoptionmenu(self):
         import Histogram
 
         Histogram.Histogram.options(self)
 
         res = Histogram.Histogram.optionChoiceR(self)
-        exp = "1" + "2" + "3" + "4" + "5" + "6"
+        exp = 1 <= res <= 6
+
+        self.assertTrue(exp)
+    
+    def gtesthighscore(self):
+        pass
+    
+    def dtestAIsetting(self):
+        import Intelligence
+
+        res = Intelligence.Intelligence.AIsetting(self)
+        exp = 1 <= res <= 4
+
+        self.assertTrue(exp)
+    
+    def gtestcheat(self):
+        import Game
+
+        res = Game.game.cheating(self)
+        exp = Game.game.cheatT(self)
 
         self.assertTrue(res, exp)
     
-    def testhighscore(self):
-        self.Pn1 = "name"
-  
+    def testgamerun(self):
+        pass
 
-        res = self.Pn1 
-        exp = "name"
+    def testmultiplayer(self):
+        pass
 
-        self.assertEqual(res, exp)
+
+
 
 
 
@@ -61,4 +88,5 @@ class playertest(unittest.TestCase):
 
 
 if __name__ == '__main__':
+
     unittest.main()
