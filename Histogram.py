@@ -84,8 +84,15 @@ class Histogram:
 
 
     def history(self):
-        print("hello")
-        print("This is history :)")
+        import Game
+        print("Player 1: ")
+        print(*Game.dicerolls_listp1, sep=',')
+        print("player 2: ")
+        print(*Game.dicerolls_listp2, sep=',')
+
+
+       
+
 
 
 #i = Intelligence()

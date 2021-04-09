@@ -140,11 +140,21 @@ class Intelligence:
     def endmessage(self):
         import HighScore
         import Player
+        import Game
 
         print("\nThank you for playing our pig game =) See you soon again!")
 
         print("Player 1: " + Player.player.Player1nameR(self) + " " + str(Intelligence.takescores1(self)) + " points")
         print("Player 2: " + Player.player.Player2nameR(self) + " " + str(Intelligence.takescores2(self)) + " points")
+
+        print("\nHere are the history of dice for this game: ")
+        print("Player 1: ")
+        print(*Game.dicerolls_listp1, sep=',')
+        print("player 2: ")
+        print(*Game.dicerolls_listp2, sep=',')
+
+
+
         
         HighScore.HighScore.read_log(self)
         

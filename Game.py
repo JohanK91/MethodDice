@@ -3,10 +3,6 @@ import Dice
 
 class game():
 
-    #import Intelligence
-
- 
-
     def gamerun(self):
         
         global player1score
@@ -169,6 +165,10 @@ class game():
     def playermove(self):
         import Histogram
         #import Dice
+        global dicerolls_listp1
+        dicerolls_listp1 = []
+        
+        
 
         self.macthscore = 0
         self.newround = game.newroundTrue(self)
@@ -176,6 +176,10 @@ class game():
 
         while self.newround == True:
             self.rolling = Dice.dice.Dicerolling(self)
+            dicerolls_listp1.append(self.rolling)
+            
+
+
             if (self.rolling == 1):
                 print(self.Player1name + ", your dice showed a {}".format(self.rolling))
                 self.macthscore = 0
@@ -210,17 +214,24 @@ class game():
         print("Turn over!")
         self.macthscore = self.macthscore + game.cheatingR(self)
     # print(Player1name + "'s turn now.")
-        return self.macthscore
+        return self.macthscore, dicerolls_listp1
 
 
     def player2move(self):
         import Histogram
+        global dicerolls_listp2
+        dicerolls_listp2 = []
         self.macthscore = 0
+        
+        
         self.newround = game.newroundTrue(self)
-        game.playerTurn2(self)
+        game.playerTurn2(self) 
+        
 
         while self.newround == True:
             self.rolling = Dice.dice.Dicerolling(self)
+            dicerolls_listp2.append(self.rolling)
+
             if (self.rolling == 1):
                 print(self.Player2name + ", your dice showed a {}".format(self.rolling))
                 self.macthscore = 0
@@ -251,17 +262,22 @@ class game():
         print("Turn over!")
     # print(Player1name + "'s turn now.")
         self.macthscore = self.macthscore + game.cheatingR(self)
-        return self.macthscore
+        return self.macthscore, dicerolls_listp2
 
     def computermove(self):
+        global dicerolls_listp2
+        dicerolls_listp2 = []
         self.macthscore = 0
         self.newround = game.newroundTrue(self)
         self.mode = 0
+        
         #comproll = True
         #import Dice
 
         while self.newround == True:
             self.rolling = Dice.dice.Dicerolling(self)
+            dicerolls_listp2.append(self.rolling)
+            
             if self.rolling == 1:
                 print("The AI rolled a 1")
                 self.macthscore = 0 
@@ -276,6 +292,6 @@ class game():
                     self.newround = game.newroundFalse(self)
         print("The AI's turn have ended. It is now " + self.Player1name + "'s turn to roll. Prepare yourself.")
        # print("The AI have a current score of: {}".format(self.macthscore))
-        return self.macthscore
+        return self.macthscore, dicerolls_listp2
     
 #t = Intelligence()
