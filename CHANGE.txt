@@ -12,3 +12,5 @@
 03/12 - Solved the issue with using classes in other files. Now we can start to implement proper OOP.
 
 03/19 - moved out more functions into their own file.
+
+04/13 - updated github with more tests. 
