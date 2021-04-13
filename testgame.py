@@ -2,11 +2,11 @@ import unittest
 
 
 class playertest(unittest.TestCase):
-    def xtestcheatTrue(self):
+    def testcheatTrue(self):
         import Game
 
         res = Game.game.cheatT(self)
-        exp = Game.game.cheatingR(self)
+        exp = Game.game.cheatR(self)
 
         self.assertTrue(res, exp)
     
@@ -57,7 +57,7 @@ class playertest(unittest.TestCase):
         exp = res
         self.assertSetEqual(res, exp)
     
-    def testwinprint1player(self):
+    def stestwinprint1player(self):
         #p1 win
         import Game
         global player1score
