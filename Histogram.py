@@ -85,10 +85,12 @@ class Histogram:
 
     def history(self):
         import Game
-        print("Player 1: ")
-        print(*Game.dicerolls_listp1, sep=',')
-        print("player 2: ")
-        print(*Game.dicerolls_listp2, sep=',')
+        import Player
+        print("The rolled numbers so far!")
+        print(Player.player.Player1nameR(self) + ":")
+        print(Game.game.list1R(self), sep=', ')
+        print(Player.player.Player2nameR(self) + ":")
+        print(Game.game.list2R(self), sep=', ')
 
 
        

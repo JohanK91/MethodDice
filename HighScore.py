@@ -14,8 +14,8 @@ class HighScore():
 
         try:
             with open('log.txt', 'a') as file_open: # C:\Users\46707 saved in that area. 
-                line1 = "Player 1: {} have total points of {}\n".format(self.Pn1, self.S1)
-                line2 = "Player 2: {} have total points of {}\n".format(self.Pn2, self.S2)
+                line1 = "Player 1 '{}'  have a total score of {}\n".format(self.Pn1, self.S1)    
+                line2 = "Player 2 '{}'  have a total score of {}\n".format(self.Pn2, self.S2)
                 line3 = ("\nNew Game\n")
 
                 file_open.write(line1)
