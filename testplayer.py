@@ -26,7 +26,6 @@ class playertest(unittest.TestCase):
         self.assertEqual(res, exp)
 
     def stestname2(self):
-
         import Player
         Player.player.twoplayT(self)
 

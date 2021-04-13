@@ -3,8 +3,17 @@ import random
 class dice:
 
     def Dicerolling(self):
-        self.Diceupperside = int(random.random()*6+1)
-        return self.Diceupperside
+        global Diceupperside
+        Diceupperside = int(random.random()*6+1)
+        return Diceupperside
+
+    def rollGet(self):
+        global Diceupperside
+        num = Diceupperside
+#        Diceupperside = self.Diceupperside
+        #Diceupperside = self.Diceupperside
+        return num
+
 
 """
 

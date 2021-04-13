@@ -3,31 +3,32 @@
 
 class Histogram:
 
+    def optionsprint(self):
+        x = ("This is the options menu. Here you can do several things." +
+        "\n1. Change your name." +
+        "\n2. Upload your score to the highscore list." +
+        "\n3. History of rolls." +
+        "\n4. AI intelligence." + 
+        "\n5. Cheat" +
+        "\n6. Return to the match.")
+        
+        return x
+
     def options(self):
         import Player
-        p = Player.player
         import Game
-        self.twoplay = Player.player.twoplayR(self)
-        #global cheatcode
-        #self.cheatcode = False
-
-        print("This is the options menu. Here you can do several things.")
-        print("1. Change your name.")
-        print("2. Upload your score to the highscore list.")
-        print("3. History of rolls.")
-        print("4. AI intelligence.")
-        print("5. Cheat")
-        print("6. Return to the match.")
+    
+        print(Histogram.optionsprint(self))
 
         self.optionChoice = input("Enter the number of your choice: ")
         #while optionChoice != 5:
        
         if self.optionChoice == "1":
             # change name
-            p.namePlayer1(self)
-            if self.twoplay == True:
+            Player.player.namePlayer1(self)
+            if Player.player.twoplayR(self) == True:
                 Game.game.newroundTrue(self)
-                p.namePlayer2(self)
+                Player.player.namePlayer2(self)
 
         elif self.optionChoice == "2":
             #HighScore.HighScore.read_log(self)
@@ -46,56 +47,77 @@ class Histogram:
             import Intelligence
             Game.game.newroundTrue(self)
             Intelligence.Intelligence.AIsetting(self)
-            #Intelligence.Intelligence.AIsetting(self)
+         
 
         elif self.optionChoice == "5":
             # cheat
             print("A player have just cheated!!")
             Game.game.cheatT(self)
             Game.game.newroundFalse(self)
-            #Game.game.cheatingR(self)
-            
-
-            #i.cheatcode()
-            #t.cheat()
-            #t.gamerun()
+           
+      
 
         elif self.optionChoice == "6":
             # return to game
             Game.game.newroundTrue(self)
             
-       #     if self.twoplay == False:
-        #        Game.game.newroundTrue(self)
-                #Game.game.gamerun(self)
-
-         #   elif self.twoplay == True:
-          #      Game.game.newroundTrue(self)
-                #Game.game.multiplayergame(self)
-
+   
         else:
             print("Please input a number between 1-6.")
-            h.options()
+            Histogram.options(self)
     
     def optionChoiceR(self):
         global optionChoice
         optionChoice =  self.optionChoice
-        return optionChoice
+        return self.optionChoice
+
+
+    def optionChoice1(self):
+        global optionChoice
+        #optionChoice =  self.optionChoice
+        self.optionChoice = "1"
+        return self.optionChoice
+
+
+    def optionChoice2(self):
+        global optionChoice
+        #optionChoice =  self.optionChoice
+        self.optionChoice = "2"
+        return self.optionChoice
+
+    def optionChoice3(self):
+        global optionChoice
+        #optionChoice =  self.optionChoice
+        self.optionChoice = "3"
+        return self.optionChoice
+
+    def optionChoice4(self):
+        global optionChoice
+        #optionChoice =  self.optionChoice
+        self.optionChoice = "4"
+        return self.optionChoice
+
+    def optionChoice5(self):
+        global optionChoice
+        #optionChoice =  self.optionChoice
+        self.optionChoice = "5"
+        return self.optionChoice
+
+        
+    def optionChoice6(self):
+        global optionChoice
+        #optionChoice =  self.optionChoice
+        self.optionChoice = "6"
+        return self.optionChoice
 
 
 
     def history(self):
         import Game
         import Player
-        print("The rolled numbers so far!")
+        print("The rolled numbers:")
         print(Player.player.Player1nameR(self) + ":")
         print(Game.game.list1R(self), sep=', ')
         print(Player.player.Player2nameR(self) + ":")
         print(Game.game.list2R(self), sep=', ')
 
-
-       
-
-
-
-#i = Intelligence()
-h = Histogram()

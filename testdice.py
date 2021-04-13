@@ -1,8 +1,8 @@
 import unittest
 
 
-class playertest(unittest.TestCase):
-    def mtestdice(self):
+class dicetest(unittest.TestCase):
+    def testdice(self):
         import Dice
         number = Dice.dice.Dicerolling(self)
         res = number

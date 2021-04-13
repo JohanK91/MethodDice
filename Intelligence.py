@@ -4,21 +4,20 @@ import random
 class Intelligence:
 
     def start(self):
-        print("Welcome to the Dice Game of life. We will play using the rules of Pig. One dice.")
-        print("Your rolled numbers will add together.")
-        print("You may also hold at anytime, which will add your numbers together and give the turn to the other player.")
-        print("The catch is that if you roll a 1, your turn is over and your temporary points are wasted.")
+        print(Intelligence.startprint(self))
         Intelligence.numOfPlayers(self)
 
+    def startprint(self):
+        x = ("Welcome to the Dice Game of life. We will play using the rules of Pig. One dice." +
+        "\nYour rolled numbers will add together." +
+        "\nYou may also hold at anytime, which will add your numbers together and give the turn to the other player." +
+        "\nThe catch is that if you roll a 1, your turn is over and your temporary points are wasted.")
+        return x
 
     def numOfPlayers(self):
         import Player
         
-
-        print("Now, do you wish to play with 1 or 2 players?")
-        print("1. 1 player, and AI opponent.")
-        print("2. 2 players.")
-        print("3. Quit.")
+        print(Intelligence.numOfPlayersprint(self))
 
         num = input("Enter your choice here: ")
         if num == "1":
@@ -32,51 +31,57 @@ class Intelligence:
             import main
             main.main.main(self)
     
-        
-    def __init__(self):
-        self.diff = 20
 
-
-
-    def AIsetting(self):
-        print("what type of AI settings do you wish to have?")
-        #print(diff)
-        self.diff = int(input("Input how many points the AI will aim for: "))
+    def numOfPlayersprint(self):
+        x = ("Now, do you wish to play with 1 or 2 players?" +
+        "\n1. 1 player, and AI opponent." +
+        "\n2. 2 players." +
+        "\n3. Quit.")
+        return x
 
 
     def AIsetting(self):
-        #global mode
-        #global comproll
-        #comproll
+        global mode
+        self.mode = 0 
+        print(Intelligence.AIsettingprint(self))
+        self.choice = input("Enter the number of your choice: ")
 
-        self.mode = 0
-        print("Choose a setting.") 
-        print("1. Easy \n"+
-        "2. Random\n"+
-        "3. Extreme\n"+
-        "4. Customized")
+        if self.choice == "1":
+            self.mode = 30
 
-        self.choice = int(input("Enter the number of your choice: "))
-
-        if self.choice == 1:
-            self.mode = 40
-
-        elif self.choice == 2:
+        elif self.choice == "2":
             self.mode = random.randint(5, 30)
-            #print(mode)
-            #mode = int(random.random())
 
-        elif self.choice == 3:
-            self.mode = 5
+        elif self.choice == "3":
+            self.mode = 6
 
-        elif self.choice == 4:
+        elif self.choice == "4":
             self.mode = int(input("Input how many points the AI will aim for: "))
 
         else:
-            print("Not all valid option. Try again.")
-            i.AIsetting()
-            #AIsetting()
+            print("Not a valid option. Try again.")
+            Intelligence.AIsetting(self)
+         
+
+    def AIsettingprint(self):
+        x = ("Choose a setting." +
+        "\n1. Easy" +
+        "\n2. Random" +
+        "\n3. Extreme" +
+        "\n4. Customized")
+        return x
+
   
+    def AImode(self):
+        global mode 
+        mode = self.mode
+        return mode
+
+    def AImodeHard(self):
+        global mode
+        mode = 20
+        return mode
+                
 
     def takescores1(self):
         global player1score
@@ -87,11 +92,6 @@ class Intelligence:
         global player2score
         player2score = self.player2score
         return player2score
-
-
-    # functions from dicegame
-
-
 
 
     def cheatcode(self):
@@ -117,13 +117,11 @@ class Intelligence:
     def takenames1(self):
         global Player1name
         Player1name = self.Player1name
-        #Player1name = "derp"
         return Player1name
 
     def takenames2(self):
         global Player2name
         Player2name = self.Player2name
-        #Player2name = "test"
         return Player2name
 
     def takescores1(self):
@@ -141,23 +139,16 @@ class Intelligence:
         import HighScore
         import Player
         import Game
+        import Histogram
 
         print("\nThank you for playing our pig game =) See you soon again!")
 
-        print("Player 1: " + Player.player.Player1nameR(self) + " " + str(Intelligence.takescores1(self)) + " points")
-        print("Player 2: " + Player.player.Player2nameR(self) + " " + str(Intelligence.takescores2(self)) + " points")
+       # print("Player 1 '{}'  got a total score of {}\n".format(self.Pn1, self.S1))
+       # print("Player 2 '{}'  got a total score of {}\n".format(self.Pn2, self.S2))
 
-        print("\nHere are the history of dice for this game: ")
-        print("Player 1: ")
-        print(*Game.dicerolls_listp1, sep=',')
-        print("player 2: ")
-        print(*Game.dicerolls_listp2, sep=',')
+        print(Player.player.Player1nameR(self) + ": " + str(Intelligence.takescores1(self)) + " points")
+        print(Player.player.Player2nameR(self) + ": " + str(Intelligence.takescores2(self)) + " points")
 
-
-
-        
+        Histogram.Histogram.history(self)
         HighScore.HighScore.read_log(self)
         
-        
-
-i = Intelligence()
