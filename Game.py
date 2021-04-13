@@ -2,6 +2,18 @@
 import Dice
 
 class game():
+    def winprint1(self):
+        global player1score
+        global player2score
+
+        if (self.player1score > self.player2score):
+            x = "Congrats!! You won! :D"
+           # print(x)
+            return x
+        else:
+            x = "Sorry! The AI was better this time! :frowning: \nBetter luck next time ;)"
+           # print(x)
+            return x
 
     def gamerun(self):
         
@@ -18,18 +30,15 @@ class game():
         
         while (self.player1score < 100 and self.player2score < 100):
            # print("Your current score is: {} \n" .format(self.player1score))
-            
+
             self.player1score = self.player1score + game.playermove(self) 
             print(self.Player1name + ", your current score is: {} \n" .format(self.player1score))
             if(self.player1score < 100):
                 self.player2score = self.player2score + game.computermove(self)
                 print("The AI have a current score of: {}".format(self.player2score))
                 print()
-               
-        if (self.player1score > self.player2score):
-            print("Congrats!! You won! :D")
-        else:
-            print("Sorry! The AI was better this time! :( \nBetter luck next time ;)")
+            
+        print(game.winprint1(self))
     
     
     def multiplayergame(self):
@@ -154,6 +163,12 @@ class game():
         return newround
 
 
+    def playerTurnR(self):
+        global playerturn
+        playerturn = "he"
+        return playerturn
+
+
     def playerTurn1(self):
         global playerturn
         playerturn = "p1"
@@ -164,9 +179,7 @@ class game():
         playerturn = "p2"
         return playerturn
 
-    def playerTurnR(self):
-        global playerturn
-        return playerturn
+
 
     def list1R(self):
         global dicerolls_listp1
@@ -178,7 +191,9 @@ class game():
 
 
 
-
+    def player1round(self):
+        print = (self.Player1name + ", your dice showed a {}".format(self.rolling))
+        return print
 
     def playermove(self):
         import Histogram
@@ -193,16 +208,16 @@ class game():
         while self.newround == True:
             self.rolling = Dice.dice.Dicerolling(self)
             dicerolls_listp1.append(self.rolling)
-            print(dicerolls_listp1)
+            
             
 
 
             if (self.rolling == 1):
-                print(self.Player1name + ", your dice showed a {}".format(self.rolling))
+                game.player1round(self)
                 self.macthscore = 0
                 self.newround = game.newroundFalse(self)
             else:
-                print(self.Player1name + ", your dice showed a {}".format(self.rolling))
+                game.player1round(self)
                 self.macthscore = self.macthscore + self.rolling
                 print("Your score for this round is {}".format(self.macthscore))
                 print(self.Player1name + ", do you want to roll again? (y = yes) & (n = no) & (q = options)")
@@ -233,6 +248,11 @@ class game():
     # print(Player1name + "'s turn now.")
         return self.macthscore
 
+    def playerround2(self):
+        print = (self.Player2name + ", your dice showed a {}".format(self.rolling))
+    
+        return print
+
 
     def player2move(self):
         import Histogram
@@ -250,11 +270,11 @@ class game():
             dicerolls_listp2.append(self.rolling)
 
             if (self.rolling == 1):
-                print(self.Player2name + ", your dice showed a {}".format(self.rolling))
+                game.playerround2(self)
                 self.macthscore = 0
                 self.newround = game.newroundFalse(self)
             else:
-                print(self.Player2name + ", your dice showed a {}".format(self.rolling))
+                game.playerround2(self)
                 self.macthscore = self.macthscore + self.rolling
                 print("Your score for this round is {}".format(self.macthscore))
                 print(self.Player2name + ", do you want to roll again? (y = yes) & (n = no) & (q = options)")
@@ -281,6 +301,17 @@ class game():
         self.macthscore = self.macthscore + game.cheatingR(self)
         return self.macthscore
 
+    def computerroud1(self):
+        print = ("The AI rolled a 1")
+    
+        return print
+
+    def computerroud2(self):
+        print = ("The AI rolled a {}".format(self.rolling))
+        return print
+
+
+
     def computermove(self):
         global dicerolls_listp2
         #dicerolls_listp2 = []
@@ -296,11 +327,11 @@ class game():
             dicerolls_listp2.append(self.rolling)
             
             if self.rolling == 1:
-                print("The AI rolled a 1")
+                game.computerroud1(self)
                 self.macthscore = 0 
                 self.newround = game.newroundFalse(self)
             else:
-                print("The AI rolled a {}".format(self.rolling))
+                game.computerroud2(self)
                 self.macthscore = self.macthscore + self.rolling
                 if self.macthscore < self.mode: # and comproll == True:
                     print("The AI has chosen to roll again!")

@@ -2,13 +2,13 @@ import unittest
 
 
 class playertest(unittest.TestCase):    
-    def dtestoptionmenu(self):
+    def testoptionmenu(self):
         import Histogram
 
         Histogram.Histogram.options(self)
 
         res = Histogram.Histogram.optionChoiceR(self)
-        exp = 1 <= res <= 6
+        exp = "1", "2", "3", "4", "5", "6"
 
         self.assertTrue(exp)
 
