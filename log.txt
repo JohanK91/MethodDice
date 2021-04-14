@@ -26,3 +26,11 @@ Player 1 'f'  got a total score of 105
 Player 2 'The AI'  got a total score of 0
 
 New Game
+Player 1 'victor'  got a total score of 69
+Player 2 'The AI'  got a total score of 108
+
+New Game
+Player 1 'victor'  got a total score of 100
+Player 2 'The AI'  got a total score of 0
+
+New Game
