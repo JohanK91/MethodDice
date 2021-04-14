@@ -66,23 +66,6 @@ class gametest(unittest.TestCase):
         exp = ("Congrats!! " + Player.player.Player2nameR(self) + ", you won! :D")
         self.assertEqual(res, exp)
     
-
-    def testcheatTrue(self):
-        import Game
-        res = Game.game.cheatT(self)
-        exp = Game.game.cheatingR(self)
-
-        self.assertTrue(res, exp)
-    
-
-    def testcheatFalse(self):
-        import Game
-        res = Game.game.cheatF(self)
-        exp = Game.game.cheatingR(self)
-
-        self.assertFalse(res, exp)
-
-    
     def testnewround(self):
         import Game
         res = Game.game.newroundTrue(self)

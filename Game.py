@@ -65,31 +65,12 @@ class game():
             x = ("Congrats!! " + Player.player.Player2nameR(self) + ", you won! :D")
             return x
          
+        
 
-    def cheating(self):
-        import Player
-        if game.playerTurnR(self) == "p1":
-            print(Player.player.Player1nameR(self) + " cheated!!")
-       
-        elif game.playerTurnR(self) == "p2":
-            print(Player.player.Player2nameR(self) + " cheated!!")
-            
-    def cheatingR(self):
-        global cheatpoints
-        global cheat
-        if game.cheatR(self) == False:
-            cheatpoints = 0
-            print("no cheating")
-            return cheatpoints
-
-        elif game.cheatR(self) == True:
-            game.cheating(self)
-            print("CHEEEEATTT!")
-            cheatpoints = 100
-            return cheatpoints
 
 
     def playermove(self):
+        import Cheat
         import Histogram
         import Dice
         global dicerolls_listp1
@@ -112,26 +93,27 @@ class game():
                 self.newround = game.playerYN(self)
 
         print("Turn over!")
-        self.matchscore = self.matchscore + game.cheatingR(self)
-        return self.matchscore
+        self.matchscore = self.matchscore + Cheat.cheatclass.cheatingR(self)
+        return self.matchscore  
 
     def playerYN(self):
+        import Cheat
         import Histogram
         print("Do you want to roll again? (y = yes) & (n = no) & (q = options)")
         self.newroundchoice = input("Enter your choice here: ")
             
         if (self.newroundchoice == "y" or self.newroundchoice == "Y"):
-            game.cheatF(self)
+            Cheat.cheatclass.cheatF(self)
             self.newround = game.newroundTrue(self)
             return newround
             
         elif (self.newroundchoice == "n" or self.newroundchoice == "N"):
-            game.cheatF(self)
+            Cheat.cheatclass.cheatF(self)
             self.newround = game.newroundFalse(self)
             return newround
 
         elif (self.newroundchoice == "q" or self.newroundchoice == "Q"):
-            game.cheatF(self)
+            Cheat.cheatclass.cheatF(self)
             Histogram.Histogram.options(self)
             self.newround = game.newroundR(self)
             return newround
@@ -152,6 +134,7 @@ class game():
     def player2move(self):
         import Histogram
         import Dice
+        import Cheat
         global dicerolls_listp2
         self.matchscore = 0
         self.newround = game.newroundTrue(self)
@@ -172,7 +155,7 @@ class game():
                 self.newround = game.playerYN(self)
             
         print("Turn over!")
-        self.matchscore = self.matchscore + game.cheatingR(self)
+        self.matchscore = self.matchscore + Cheat.cheatclass.cheatingR(self)
         return self.matchscore
 
     def player2round(self):
@@ -218,22 +201,6 @@ class game():
 
         print("The AI's turn have ended. It is now " + Player.player.Player1nameR(self) + "'s turn to roll. Prepare yourself.")
         return self.matchscore
-
-
-    def cheatR(self):
-        global cheat
-        cheat = cheat        
-        return cheat
-
-    def cheatT(self):
-        global cheat
-        cheat = True
-        return cheat
-
-    def cheatF(self):
-        global cheat
-        cheat = False
-        return cheat
 
     def newroundFalse(self):
         global newround

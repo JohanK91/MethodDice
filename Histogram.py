@@ -17,6 +17,7 @@ class Histogram:
     def options(self):
         import Player
         import Game
+        import Cheat
     
         print(Histogram.optionsprint(self))
 
@@ -51,8 +52,9 @@ class Histogram:
 
         elif self.optionChoice == "5":
             # cheat
+            import Cheat
             print("A player have just cheated!!")
-            Game.game.cheatT(self)
+            Cheat.cheatclass.cheatT(self)
             Game.game.newroundFalse(self)
            
       

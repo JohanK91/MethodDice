@@ -22,3 +22,7 @@ Player 1: f have total points of 0
 Player 2: The AI have total points of 0
 
 New Game
+Player 1 'f'  got a total score of 105
+Player 2 'The AI'  got a total score of 0
+
+New Game
