@@ -19,3 +19,6 @@ Pig (Dice game) in python, for school
 
 04/14 - coverage, uml, removed dicehand, dicegame & unittesting. [V0.8]
 
+04/15 - documenation done [V0.9]
+
+04/16 - Game completed [V1.0]

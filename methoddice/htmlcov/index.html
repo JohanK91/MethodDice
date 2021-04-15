@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Coverage report</title>
+    <link rel="icon" sizes="32x32" href="favicon_32.png">
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="jquery.ba-throttle-debounce.min.js"></script>
+    <script type="text/javascript" src="jquery.tablesorter.min.js"></script>
+    <script type="text/javascript" src="jquery.hotkeys.js"></script>
+    <script type="text/javascript" src="coverage_html.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(coverage.index_ready);
+    </script>
+</head>
+<body class="indexfile">
+<div id="header">
+    <div class="content">
+        <h1>Coverage report:
+            <span class="pc_cov">55%</span>
+        </h1>
+        <img id="keyboard_icon" src="keybd_closed.png" alt="Show keyboard shortcuts" />
+        <form id="filter_container">
+            <input id="filter" type="text" value="" placeholder="filter..." />
+        </form>
+    </div>
+</div>
+<div class="help_panel">
+    <img id="panel_icon" src="keybd_open.png" alt="Hide keyboard shortcuts" />
+    <p class="legend">Hot-keys on this page</p>
+    <div>
+    <p class="keyhelp">
+        <span class="key">n</span>
+        <span class="key">s</span>
+        <span class="key">m</span>
+        <span class="key">x</span>
+        <span class="key">c</span> &nbsp; change column sorting
+    </p>
+    </div>
+</div>
+<div id="index">
+    <table class="index">
+        <thead>
+            <tr class="tablehead" title="Click to sort">
+                <th class="name left headerSortDown shortkey_n">Module</th>
+                <th class="shortkey_s">statements</th>
+                <th class="shortkey_m">missing</th>
+                <th class="shortkey_x">excluded</th>
+                <th class="right shortkey_c">coverage</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr class="total">
+                <td class="name left">Total</td>
+                <td>626</td>
+                <td>280</td>
+                <td>0</td>
+                <td class="right" data-ratio="346 626">55%</td>
+            </tr>
+        </tfoot>
+        <tbody>
+            <tr class="file">
+                <td class="name left"><a href="Cheat_py.html">Cheat.py</a></td>
+                <td>27</td>
+                <td>2</td>
+                <td>0</td>
+                <td class="right" data-ratio="25 27">93%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="Dice_py.html">Dice.py</a></td>
+                <td>8</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="right" data-ratio="8 8">100%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="Game_py.html">Game.py</a></td>
+                <td>164</td>
+                <td>115</td>
+                <td>0</td>
+                <td class="right" data-ratio="49 164">30%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="HighScore_py.html">HighScore.py</a></td>
+                <td>24</td>
+                <td>22</td>
+                <td>0</td>
+                <td class="right" data-ratio="2 24">8%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="Histogram_py.html">Histogram.py</a></td>
+                <td>64</td>
+                <td>37</td>
+                <td>0</td>
+                <td class="right" data-ratio="27 64">42%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="Intelligence_py.html">Intelligence.py</a></td>
+                <td>85</td>
+                <td>58</td>
+                <td>0</td>
+                <td class="right" data-ratio="27 85">32%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="Player_py.html">Player.py</a></td>
+                <td>62</td>
+                <td>31</td>
+                <td>0</td>
+                <td class="right" data-ratio="31 62">50%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="main_py.html">main.py</a></td>
+                <td>8</td>
+                <td>5</td>
+                <td>0</td>
+                <td class="right" data-ratio="3 8">38%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="testcheat_py.html">testcheat.py</a></td>
+                <td>14</td>
+                <td>1</td>
+                <td>0</td>
+                <td class="right" data-ratio="13 14">93%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="testdice_py.html">testdice.py</a></td>
+                <td>16</td>
+                <td>1</td>
+                <td>0</td>
+                <td class="right" data-ratio="15 16">94%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="testgame_py.html">testgame.py</a></td>
+                <td>76</td>
+                <td>5</td>
+                <td>0</td>
+                <td class="right" data-ratio="71 76">93%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="testhistogram_py.html">testhistogram.py</a></td>
+                <td>39</td>
+                <td>1</td>
+                <td>0</td>
+                <td class="right" data-ratio="38 39">97%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="testintelligence_py.html">testintelligence.py</a></td>
+                <td>19</td>
+                <td>1</td>
+                <td>0</td>
+                <td class="right" data-ratio="18 19">95%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="testplayer_py.html">testplayer.py</a></td>
+                <td>20</td>
+                <td>1</td>
+                <td>0</td>
+                <td class="right" data-ratio="19 20">95%</td>
+            </tr>
+        </tbody>
+    </table>
+    <p id="no_rows">
+        No items found using the specified filter.
+    </p>
+</div>
+<div id="footer">
+    <div class="content">
+        <p>
+            <a class="nav" href="https://coverage.readthedocs.io">coverage.py v5.5</a>,
+            created at 2021-04-15 16:52 +0200
+        </p>
+    </div>
+</div>
+</body>
+</html>
