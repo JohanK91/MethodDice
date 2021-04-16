@@ -155,20 +155,21 @@ class Intelligence:
 
     
     def endmessage(self):
+        
         """Handles the prints of the endmessage and shows the score at the end"""
         import HighScore
         import Player
-        import Game
         import Histogram
+        import time
 
         print("\nThank you for playing our pig game =) See you soon again!")
 
-       # print("Player 1 '{}'  got a total score of {}\n".format(self.Pn1, self.S1))
-       # print("Player 2 '{}'  got a total score of {}\n".format(self.Pn2, self.S2))
+   
 
         print(Player.player.Player1nameR(self) + ": " + str(Intelligence.takescores1(self)) + " points")
         print(Player.player.Player2nameR(self) + ": " + str(Intelligence.takescores2(self)) + " points")
 
         Histogram.Histogram.history(self)
         HighScore.HighScore.read_log(self)
+        time.sleep(4)
         

@@ -1,0 +1,4 @@
+Player 1 'bn'  got a total score of 72
+Player 2 'The AI'  got a total score of 123
+
+New Game
